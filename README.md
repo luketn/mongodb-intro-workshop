@@ -13,11 +13,7 @@ e.g.
 docker run -d -it --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
 `
 
-2. Robomongo (also named Robo3T) as a GUI to connect to MongoDB
-https://robomongo.org/
-
-
-3. IntelliJ (to write some sample code - community edition is fine)  
+2. IntelliJ (to write some sample code - community edition is fine)  
 https://www.jetbrains.com/idea/
 
 
@@ -29,11 +25,15 @@ To get your local machine set up, follow these steps:
 ```
 docker run -d -it --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
 ```
+![image](https://user-images.githubusercontent.com/1756555/140829241-6ebe8b0e-4e9b-4eb0-9c98-2dad628aa776.png)
 
-3. Open Robomongo
-4. 
+3. Connect to MongoDB using the Mongo Shell on the docker container:
+```
+docker exec -it mongodb-workshop mongosh
+```
+![image](https://user-images.githubusercontent.com/1756555/140830257-5b78da83-174a-4b7f-b0e5-e0af46427348.png)
 
-
+At this point you have MongoDB running locally and a shell ready to explore MongoDB with and run through the workshop.
 
 
 ### Additional Reading
