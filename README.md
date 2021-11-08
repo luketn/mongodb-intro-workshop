@@ -7,8 +7,11 @@ This workshop is a short introduction to MongoDB in general and how to work with
 To participate on your local machine (optional) you will need the following tools installed:
 
 1. Docker (to run MongoDB)
-https://www.docker.com/products/docker-desktop
-e.g. docker run -d -it --rm --name clarifruit-mongo -p 27017:27017 mongo:5.0.3
+https://www.docker.com/products/docker-desktop  
+e.g.  
+`
+docker run -d -it --rm --name clarifruit-mongo -p 27017:27017 mongo:5.0.3
+`
 
 2. Robomongo (as a GUI to connect to MongoDB)
 https://robomongo.org/
