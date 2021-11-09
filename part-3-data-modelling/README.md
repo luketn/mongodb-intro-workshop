@@ -16,7 +16,10 @@ For example, let's say that you have an application where there is a home page. 
 
 Query:
 ```javascript
-db.news.find({companyId: 123}, {_id: 1, date: 1, description: 1}).sort({date: -1}).limit(10)
+db.news
+    .find({companyId: 123}, {_id: 1, date: 1, description: 1})
+    .sort({date: -1})
+    .limit(10)
 ```
 Index:
 ```json
@@ -28,11 +31,72 @@ Index:
  
 This search and sort will be entirely covered by the index, and no scan of the news collection will be required to determine the documents to fetch.  
 
-Using the projection clause of the find(), the fields to return are limited to only those required by the UI. This means that MongoDB will only read 10 documents and return the description field from them following the index lookup.π
+Using the projection clause of the find(), the fields to return are limited to only those required by the UI. This means that MongoDB will only read 10 documents and return the description field from them following the index lookup.
 
+When a user clicks one of the news items on the home page to view the detail, a second call would be made by the client to fetch the individual news document by its ID.
 
-#### The Greater Good
-What you want to do in MongoDB document modelling is to optimize the schema so that the most important clients get the best experience. This might well come at the cost of some other use-cases. For example, you might have to duplicate some data as a sub-document of many documents, meaning that writes will be slower whilst you apply that update to all of them. In general this gives the application much better performance if most of the time the client is reading.
+Thinking further about the news document structure itself, you would prefer that the document contained everything needed to display the news to the user, however care should be taken that the document doesn't grow indefintely and slow over time. For example, the news may have a 'like' feature, which allows users to like the news story. You might not want to store the details of every like that occurred within the document, preferring a count which increments when likes are added and decrements when they are removed:
+
+news collection document:
+```json
+{
+  "_id": ObjectId("12345"),
+  "date": 12736123712,
+  "description": "Some great news",
+  "detail": "all the actual news data",
+  "likes": 2
+}
+```
+
+news_likes collection document:
+```json
+{
+  "_id": ObjectId("12345"),
+  "newsId": ObjectId("12345"),
+  "personId": ObjectId("12345"),
+  "date": 123123887
+},
+{
+  "_id": ObjectId("123456"),
+  "newsId": ObjectId("12345"),
+  "personId": ObjectId("54321"),
+  "date": 8237422312
+}
+...
+```
+
+As opposed to using a sub-document:
+
+news collection document:
+```json
+{
+  "_id": ObjectId("12345"),
+  "date": 12736123712,
+  "description": "Some great news",
+  "detail": "all the actual news data",
+  "likes": [
+    {
+      "personId": ObjectId("12345"),
+      "date": 123123887
+    },
+    {
+      "personId": ObjectId("54321"),
+      "date": 8237422312
+    }
+  ]
+}
+```
+
+The trade-off here is that:   
+a) In the sub-document approach writes are faster because you only have to update one collection.
+Reads get slower over time because the likes array may grow indefinitely the more people like the news.  
+
+b) In the case of two-collections, writes are slower because you have to update the count in the news collection and the like in the news_likes collection, however reads are always fast no matter how many likes there are.
+
+A subtlety to the performance of this is that when MongoDB updates an integer value likes property, it never has to move the document around as it has not changed size. If you add elements to a sub-document array MongoDB may well have to be moved - an expensive operation.
+
+You might have to duplicate some data across many documents during this optimization, meaning that writes will be slower whilst you apply that update to all of them. In general this gives the application much better performance if most of the time the client is reading that collection.
+
 
 #### SQL to Mongo Design Thinking
 There is a temptation when coming from a SQL background to create one Collection per Table, with flat Documents. This turns out to be very inefficient in MongoDB, requiring the application to make many calls to the database to fulfill a use-case.

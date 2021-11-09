@@ -7,7 +7,7 @@ use MongoDBWorkshop
 // Create a new Collection, and insert a Document into it.
 db.fruit.insertOne({
     "name": "Apple",
-    "shape": "Round",
+    "color": "Green",
     "defects": 3,
     "perfect": false
 })
