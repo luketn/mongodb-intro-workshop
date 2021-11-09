@@ -4,7 +4,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Updates;
 import com.mongodb.client.result.InsertOneResult;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
@@ -14,6 +13,8 @@ import java.time.Instant;
 
 import static com.mongodb.MongoClientSettings.getDefaultCodecRegistry;
 import static com.mongodb.client.model.Filters.*;
+import static com.mongodb.client.model.Updates.*;
+import static com.mongodb.client.model.Projections.*;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
@@ -32,8 +33,8 @@ public class EntryPoint {
             System.out.println(collection.find(eq("_id", banana.getInsertedId())).first());
 
             // Update the banana
-            collection.updateOne(eq("_id", banana.getInsertedId()), Updates.set("purchased", Instant.now()));
-            System.out.println(collection.find(eq("_id", banana.getInsertedId())).first());
+            collection.updateOne(eq("_id", banana.getInsertedId()), set("purchased", Instant.now()));
+            System.out.println(collection.find(eq("_id", banana.getInsertedId())).projection(excludeId()).first());
 
             // Delete the banana
             collection.deleteOne(eq("_id", banana.getInsertedId()));

@@ -60,3 +60,15 @@ Fruit{id='6189d4524228120076288c5f', name='Apple', shape=Round, defects=3, perfe
 
 Hint: Use Guava's collection helpers to simplify iterator to list conversions.
 
+
+### Part #3 - Expand to full CRUD in Java
+Refer to the worked example (or the documentation below) and build a full CRUD in Java:
+
+Example Code: [EntryPoint.java](./src/main/java/com/mycodefu/mongodb/workshop/EntryPoint.java)
+
+#### Documentation
+Reads:  
+https://mongodb.github.io/mongo-java-driver/4.3/driver/tutorials/perform-read-operations/  
+
+Writes:  
+https://mongodb.github.io/mongo-java-driver/4.3/driver/tutorials/perform-write-operations/  
