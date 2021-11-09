@@ -72,3 +72,19 @@ https://mongodb.github.io/mongo-java-driver/4.3/driver/tutorials/perform-read-op
 
 Writes:  
 https://mongodb.github.io/mongo-java-driver/4.3/driver/tutorials/perform-write-operations/  
+
+
+### Wrap up
+MongoDB (and document databases in general) have a natural fit with object-oriented languages.
+
+There is a distinctly hard problem squaring a related table model with an object model. 
+This lies in the composition of the data and how 'normalised' it typically is at runtime.
+
+In many Java applications there is a tendency to perform a large amount of denormalisation into many
+distinct tables, and perform many joins on these tables to map to and from the object-oriented 
+application schema.
+
+With a NoSQL database you can map much more easily to your object domain model and get much better
+performance with lower code overheads as a result.
+
+
