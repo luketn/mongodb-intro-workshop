@@ -56,3 +56,7 @@ try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
 ```json
 Fruit{id='6189d4524228120076288c5f', name='Apple', shape=Round, defects=3, perfect=false, purchased=2021-11-09T02:03:49.110Z}
 ```
+
+
+Hint: Use Guava's collection helpers to simplify iterator to list conversions.
+
