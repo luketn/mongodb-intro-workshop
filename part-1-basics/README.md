@@ -33,8 +33,6 @@ Data is organised into:
   - Collections
     - Documents
 
-The document structure is 'schemaless', meaning as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, it does come at the cost of potential data integrity issues, and moves the responsibility for ensuring integrity up to the application logic.
-
 
 ### MongoDB the Company
 The business model of the company which has grown up around this open source database is to sell support and services for MongoDB as well as a cloud hosting platform named Atlas. 
