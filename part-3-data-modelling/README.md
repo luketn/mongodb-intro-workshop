@@ -35,7 +35,7 @@ Using the projection clause of the find(), the fields to return are limited to o
 
 When a user clicks one of the news items on the home page to view the detail, a second call would be made by the client to fetch the individual news document by its ID.
 
-Thinking further about the news document structure itself, you would prefer that the document contained everything needed to display the news to the user, however care should be taken that the document doesn't grow indefintely and slow over time. For example, the news may have a 'like' feature, which allows users to like the news story. You might not want to store the details of every like that occurred within the document, preferring a count which increments when likes are added and decrements when they are removed:
+Thinking further about the news document structure itself, you would prefer that the document contained everything needed to display the news to the user, however care should be taken that the document doesn't grow indefinitely and slow over time. For example, the news may have a 'like' feature, which allows users to like the news story. You might not want to store the details of every like that occurred within the document, preferring a count which increments when likes are added and decrements when they are removed:
 
 news collection document:
 ```json
@@ -106,9 +106,26 @@ In general, joins in MongoDB are not desirable. If you're translating a SQL data
 There is a balance to be struck here. Most often it wouldn't be the case that you 
 
 #### Schemaless?
-The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documentes is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.
-Just to complicate this slightly MongoDB does have an optional feature Data Validation, which can be used to enforce a schema on a collection:
+The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documents is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.  
+
+Just to complicate this slightly MongoDB does have an optional feature Data Validation, which can be used to enforce a schema on a collection:  
 https://docs.mongodb.com/manual/core/schema-validation/
+
+In general, you can think of MongoDB as having a flexible schema controlled by the application tier, rather than being totally schemaless.
+
+It's a good idea to maintain a version number string in every document, to allow easy evolution of schemas over time:
+
+```json
+{
+  "_id": ObjectId("12345"),
+  "_version": "0.0.1"
+}
+```
+
+This way, if you want to change the schema you can use this version to identify which schema the document was created with and perform any required transformations.
+
+In the most cases, schema evolution can be backwards compatible and just additive. In the rare cases where you want to completely change or remove an existing field you can bump the version number and add application logic to detect and perform the transform. 
+
 
 #### No Relationships?
 In the majority of cases, no hard relationships are created between collections of documents. 
