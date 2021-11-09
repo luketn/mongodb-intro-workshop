@@ -108,7 +108,7 @@ There is a temptation when coming from a SQL background to create one Collection
 
 In general, joins in MongoDB are not desirable. If you're translating a SQL database schema to MongoDB look for clusters of tables which are often (or always) joined on by the application in order to return a result. These could well become a single Document with Sub-Documents for the joined tables. 
 
-There is a balance to be struck here. Most often it wouldn't be the case that you 
+There is a balance to be struck here. 
 
 #### Schemaless?
 The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documents is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.  
