@@ -34,5 +34,25 @@ try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017"))
 {"_id": {"$oid": "6189d4524228120076288c5f"}, "name": "Apple", "shape": "Round", "defects": 3, "perfect": false}
 ```
 
-### Part #2
-Add 
+### Part #2 - Serialize to POJOs
+Add a POJO for the Fruit class, and initialize MongoDB to convert it.
+
+1. Update the code to include a POJO codec and use a Java type instead of the BSON Document when querying the database:
+```java
+CodecProvider pojoCodecProvider = PojoCodecProvider.builder().automatic(true).build();
+CodecRegistry pojoCodecRegistry = fromRegistries(getDefaultCodecRegistry(), fromProviders(pojoCodecProvider));
+
+try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
+    MongoDatabase database = mongoClient.getDatabase("MongoDBWorkshop").withCodecRegistry(pojoCodecRegistry);;
+    MongoCollection<Fruit> collection = database.getCollection("fruit", Fruit.class);
+    Fruit fruit = collection.find().first();
+    if (fruit != null) {
+        System.out.println(fruit.toString());
+    }
+}
+```
+2. Run the code and see the fruit printed to the console:
+
+```json
+Fruit{id='6189d4524228120076288c5f', name='Apple', shape=Round, defects=3, perfect=false, purchased=2021-11-09T02:03:49.110Z}
+```
