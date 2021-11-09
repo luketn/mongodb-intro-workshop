@@ -5,6 +5,10 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.InsertOneResult;
+import com.mycodefu.mongodb.workshop.data.DefectDetails;
+import com.mycodefu.mongodb.workshop.data.Fruit;
+import com.mycodefu.mongodb.workshop.data.Severity;
+import com.mycodefu.mongodb.workshop.data.Shape;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
@@ -39,6 +43,13 @@ public class EntryPoint {
             // Delete the banana
             collection.deleteOne(eq("_id", banana.getInsertedId()));
             System.out.println(collection.find(eq("_id", banana.getInsertedId())).first());
+
+            //Add a kiwi
+            Fruit kiwiFruit = Fruit.of("kiwi", Shape.Square, 1);
+            kiwiFruit.addDefectDetails(DefectDetails.of("Rot", Severity.BitterPit));
+            InsertOneResult kiwi = collection.insertOne(kiwiFruit);
+
+            System.out.println(collection.find(eq("_id", kiwi.getInsertedId())).first());
         }
     }
 }

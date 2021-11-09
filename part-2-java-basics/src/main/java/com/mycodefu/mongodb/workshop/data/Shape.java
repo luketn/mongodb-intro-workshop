@@ -1,4 +1,4 @@
-package com.mycodefu.mongodb.workshop;
+package com.mycodefu.mongodb.workshop.data;
 
 public enum Shape {
     Round,

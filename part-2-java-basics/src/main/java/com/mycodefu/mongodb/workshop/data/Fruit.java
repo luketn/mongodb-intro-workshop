@@ -1,8 +1,10 @@
-package com.mycodefu.mongodb.workshop;
+package com.mycodefu.mongodb.workshop.data;
 
 import org.bson.types.ObjectId;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fruit {
     private ObjectId id;
@@ -11,6 +13,7 @@ public class Fruit {
     private int defects;
     private boolean perfect;
     private Instant purchased;
+    private List<DefectDetails> defectDetails;
 
     public Fruit(ObjectId id, String name, Shape shape, int defects, boolean perfect, Instant purchased) {
         this.id = id;
@@ -76,15 +79,31 @@ public class Fruit {
         this.purchased = purchased;
     }
 
+    public List<DefectDetails> getDefectDetails() {
+        return defectDetails;
+    }
+
+    public void setDefectDetails(List<DefectDetails> defectDetails) {
+        this.defectDetails = defectDetails;
+    }
+
+    public void addDefectDetails(DefectDetails value) {
+        if (this.defectDetails == null) {
+            this.defectDetails = new ArrayList<>();
+        }
+        this.defectDetails.add(value);
+    }
+
     @Override
     public String toString() {
         return "Fruit{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", shape=" + shape +
                 ", defects=" + defects +
                 ", perfect=" + perfect +
                 ", purchased=" + purchased +
+                ", defectDetails=" + defectDetails +
                 '}';
     }
 }
