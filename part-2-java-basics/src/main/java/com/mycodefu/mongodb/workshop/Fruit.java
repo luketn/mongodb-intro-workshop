@@ -12,6 +12,22 @@ public class Fruit {
     private boolean perfect;
     private Instant purchased;
 
+    public Fruit(ObjectId id, String name, Shape shape, int defects, boolean perfect, Instant purchased) {
+        this.id = id;
+        this.name = name;
+        this.shape = shape;
+        this.defects = defects;
+        this.perfect = perfect;
+        this.purchased = purchased;
+    }
+
+    public Fruit() {
+    }
+
+    public static Fruit of(String name, Shape shape, int defects) {
+        return new Fruit(null, name, shape, defects, defects == 0, Instant.now());
+    }
+
     public ObjectId getId() {
         return id;
     }

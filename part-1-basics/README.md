@@ -18,7 +18,10 @@ BSON is functionally equivalent to JSON, so you can always visualise your data a
   "this": {
     "is": [
       "a",
-      "document"
+      "document",
+      "having",
+      {"field": "value"},
+      "pairs"
     ]
   }
 }
