@@ -1,5 +1,4 @@
 ### Data Modelling
-
 MongoDB is a great database, and it is extremely easy to get up and running and build applications with it.
 
 What is not so trivial is arriving at a well-thought-out, high performance data model for your application.
@@ -9,6 +8,10 @@ There are often different ways to design documents and collections, each with di
 #### First Principle
 The first principle I always follow in modelling MongoDB documents and indexes is:
 - Optimize for the _core_ client queries
+...and
+- Don't overoptimize upfront - keep it simple!
+
+![Table showing the phases of data modelling for Simple vs Performane goals](img_1.png)
 
 The ideal scenario should be that a single call from a client (say a RESTful API call from a browser) would translate into a single MongoDB query which would fetch a document or documents having everything required to return to the client. The query fields would all be included in an index, meaning that no scanning of the collection was required to determine the document(s) to return.
 
@@ -95,6 +98,8 @@ b) In the case of two-collections, writes are slower because you have to update 
 
 A subtlety to the performance of this is that when MongoDB updates an integer value likes property, it never has to move the document around as it has not changed size. If you add elements to a sub-document array MongoDB may well have to be moved - an expensive operation.
 
+Also, keeping the document smaller may allow more of these news documents to be retained in memory (in the 'working set') rather than being purged to disk. 
+
 You might have to duplicate some data across many documents during this optimization, meaning that writes will be slower whilst you apply that update to all of them. In general this gives the application much better performance if most of the time the client is reading that collection.
 
 
@@ -135,3 +140,16 @@ Of course in practice entities in the data model often refer to one-another.
 This can be accomplished by having an ID reference to a document in another collection, and having the application make a further query to retrieve it. 
 
 There are even ways to 'join' collections in a single query using the '$lookup' aggregation query, although it should not be a very commonly used tool if the document model matches the use-cases well.
+
+
+### Exercise 
+Run through the steps in data-modelling.js to create a collection and play with different ways of modelling the same data.
+
+Code: [data-modelling.js](./data-modelling.js)
+
+
+### Further reading
+It is really highly recommended to run through this course:  
+Data Modeling:  
+https://university.mongodb.com/courses/M320/about  
+(they do a far better job than I can explaining this topic!)

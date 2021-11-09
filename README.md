@@ -42,6 +42,8 @@ Part #1: [Basics](/part-1-basics/README.md)
 
 Part #2: [Java Basics](/part-2-java-basics/README.md)
 
+Part #3: [Data Modelling](/part-3-data-modelling/README.md)
+
 
 ### Additional Reading
 
