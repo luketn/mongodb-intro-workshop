@@ -111,7 +111,7 @@ In general, joins in MongoDB are not desirable. If you're translating a SQL data
 There is a balance to be struck here. 
 
 #### Schemaless?
-The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documents is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.  
+The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all useful data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documents is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.  
 
 Just to complicate this slightly MongoDB does have an optional feature Data Validation, which can be used to enforce a schema on a collection:  
 https://docs.mongodb.com/manual/core/schema-validation/
