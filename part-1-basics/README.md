@@ -9,7 +9,8 @@ It is completely free, extremely well maintained and mature.
 It is a 'NoSQL' Document Database, meaning it does not store data in relational tables.
 
 It allows you to read, write and index Documents, which are hierarchical data structures stored in a binary representation of JSON (BSON) - an open standard:  
-https://bsonspec.org/
+https://bsonspec.org/  
+https://docs.mongodb.com/manual/reference/bson-types/  
 
 BSON is functionally equivalent to JSON, so you can always visualise your data and easily serialize it to and from JSON strings.
 

@@ -36,6 +36,12 @@ docker exec -it mongodb-workshop mongosh
 
 At this point you have MongoDB running locally and a shell ready to explore MongoDB with and run through the workshop.
 
+### Workshop
+
+Part #1: [Basics](/part-1-basics/README.md)
+
+Part #2: [Java Basics](/part-2-java-basics/README.md)
+
 
 ### Additional Reading
 
