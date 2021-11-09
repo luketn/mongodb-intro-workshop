@@ -25,13 +25,14 @@ To get your local machine set up, follow these steps:
 ```
 docker run -d -it --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
 ```
-![image](https://user-images.githubusercontent.com/1756555/140829241-6ebe8b0e-4e9b-4eb0-9c98-2dad628aa776.png)
+![image](https://user-images.githubusercontent.com/1756555/140839586-6438f075-2c8c-48c2-8516-3650b21b31e3.png)
 
 3. Connect to MongoDB using the Mongo Shell on the docker container:
 ```
 docker exec -it mongodb-workshop mongosh
 ```
-![image](https://user-images.githubusercontent.com/1756555/140830257-5b78da83-174a-4b7f-b0e5-e0af46427348.png)
+![image](https://user-images.githubusercontent.com/1756555/140839669-09980d99-89fc-4c01-b99d-558abb7f5d25.png)
+
 
 At this point you have MongoDB running locally and a shell ready to explore MongoDB with and run through the workshop.
 
