@@ -60,9 +60,6 @@ The main difference here is that because the document is hierarchical and can ha
 
 The great thing about MongoDB is that you can much more naturally represent Java object hierarchies in the database. No more 'ORM' or complex data access logic. Just serialize your object as a document and store it in a collection!
 
-### What is a Document?
-
-
 ### Schemaless?
 The document structure in MongoDB is sometimes thought of as 'schemaless' in the sense that as long as a document is valid BSON/JSON, you can store it in a collection alongside other documents even when these documents have inconsistent schemas. Whilst this is extremely flexible, of course in practice all useful data has structure. In MongoDB, rather than the schema being enforced by the database the responsibility for ensuring the integrity of the data structure in documents is up to the application logic. This actually gives you a lot of power to evolve schemas using application changes rather than having to co-ordinate schema updates to the database alongside the deployment of the application.
 
