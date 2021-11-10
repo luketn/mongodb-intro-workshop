@@ -24,7 +24,7 @@ MongoDB uses a Document approach to storing data. Entities (and sometimes their 
 1. Embed: embed the child entity as a sub-document
 ```json
 {
-  "orderId": 123,
+  "_id": 123,
   "description": "Two fruits!",
   "orderItems": [
     {"name": "banana", "price": 12.98},
@@ -36,19 +36,21 @@ MongoDB uses a Document approach to storing data. Entities (and sometimes their 
 Order collection:
 ```json
 {
-  "orderId": 123,
+  "_id": 1,
   "description": "Two fruits!"
 }
 ```
 OrderItem collection
 ```
 {
-  "orderId": 123,
+  "_id": 1,
+  "orderId": 1,
   "name": "banana", 
   "price": 12.98
 }
 {
-  "orderId": 123,
+  "_id": 2,
+  "orderId": 1,
   "name": "kiwi", 
   "price": 98.12
 }
