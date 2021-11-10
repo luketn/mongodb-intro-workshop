@@ -20,7 +20,7 @@ Here's a mapping from Tabular / RDBMS to Document / MongoDB concepts:
 
 Relational databases use a Tabular approach to storing data. Entities are created as Rows. An indexed list of Rows is a Table. Tables are logically grouped into Databases. Within tables information about the entities are organised into Columns. Relationships between entities are defined using special foreign key Columns. 
 
-MongoDB uses a Document approach to storing data. Entities (and sometimes their aggregated child Entities) are stored as hierarchical Documents. An indexed list of Documents is a Collection are grouped into databases. Within documents information about the entities are organised as fields. Relationships between entities can be defined in one of two ways:
+MongoDB uses a Document approach to storing data. Entities (and sometimes their aggregated child Entities) are stored as hierarchical Documents. An indexed list of Documents is a Collection. Collections are grouped into databases. Within documents information about the entities are organised as fields. Relationships between entities can be defined in one of two ways:
 1. Embed: embed the child entity as a sub-document
 ```json
 {
@@ -32,7 +32,7 @@ MongoDB uses a Document approach to storing data. Entities (and sometimes their 
   ]
 }
 ```
-2. Link: add a reference to the ID of a Document in another Collection
+2. Link: add a reference to the ID of a Document in another Collection  
 Order collection:
 ```json
 {
