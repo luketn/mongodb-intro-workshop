@@ -43,10 +43,12 @@ Order collection:
 OrderItem collection
 ```
 {
+  "orderId": 123,
   "name": "banana", 
   "price": 12.98
 }
 {
+  "orderId": 123,
   "name": "kiwi", 
   "price": 98.12
 }
