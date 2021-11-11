@@ -35,3 +35,6 @@ db.fruit.deleteOne({
 
 // See the document has gone
 db.fruit.find()
+
+//try out the other operators:
+// https://docs.mongodb.com/manual/reference/operator/update/#std-label-update-operators
