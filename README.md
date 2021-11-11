@@ -54,3 +54,11 @@ https://university.mongodb.com/courses/M220J/about
 https://university.mongodb.com/courses/M320/about
 
 
+### GUIs
+You can use either Compass or Robomongo to connect to the MongoDB database:
+
+Compass:  
+https://www.mongodb.com/products/compass
+
+Robomongo:  
+https://robomongo.org/
