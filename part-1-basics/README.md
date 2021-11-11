@@ -51,3 +51,6 @@ If you've completed the Setup steps you should have a shell open and connected t
 Run through the steps in crud.js to create a database, and then CRUD a document. 
 
 Code: [crud.js](./crud.js)
+
+Further reading - shell methods on collections:  
+https://docs.mongodb.com/manual/reference/method/js-collection/
