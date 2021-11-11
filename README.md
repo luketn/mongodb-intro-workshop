@@ -6,7 +6,7 @@ This workshop is a short introduction to MongoDB in general and how to work with
 ### Tools Used in the Workshop
 To participate on your local machine (optional) you will need the following tools installed:
 
-1. Docker (to run MongoDB)
+1. Docker (to run MongoDB)  
 https://www.docker.com/products/docker-desktop  
 
 2. IntelliJ (to write some sample code - community edition is fine)  
