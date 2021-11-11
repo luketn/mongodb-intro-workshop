@@ -19,7 +19,7 @@ To get your local machine set up, follow these steps:
 1. Install the tools (see links above).
 2. Run the following command on your shell:
 ```
-docker run -d -it --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
+docker run -d --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
 ```
 ![a screenshot of the iTerm2 terminal showing the docker run output - the id of the running container daemon process](https://user-images.githubusercontent.com/1756555/140839586-6438f075-2c8c-48c2-8516-3650b21b31e3.png)
 
