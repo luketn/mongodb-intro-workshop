@@ -8,10 +8,6 @@ To participate on your local machine (optional) you will need the following tool
 
 1. Docker (to run MongoDB)
 https://www.docker.com/products/docker-desktop  
-e.g.  
-`
-docker run -d -it --rm --name mongodb-workshop -p 27017:27017 mongo:5.0.3
-`
 
 2. IntelliJ (to write some sample code - community edition is fine)  
 https://www.jetbrains.com/idea/
